@@ -1,0 +1,46 @@
+nav{
+    background-color: aliceblue;
+    border: 1px solid gray;
+}
+
+.menu-bar{
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.logo img{
+    width: 100px;
+}
+
+a{
+    text-decoration: none;
+    color: darkgoldenrod;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.menu-items{
+    /* border: 1px solid black; */
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.logo{
+    flex-grow: 2;
+}
+
+a:hover{
+    color: black;
+    text-decoration: underline;
+    font-size: 25px;
+}
+
+img{
+    width: 300px;
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}

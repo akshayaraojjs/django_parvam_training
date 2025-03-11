@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <!-- Internal CSS -->
+        <style>
+            /* Syntax:  */
+            /* selector{
+                property1 : value;
+                property2 : value;
+            } */
+            h1{   /* This is element selector */
+                color: orange;
+                margin-top: 20px;
+                margin-bottom: 50px;
+                margin-left: 0px;
+                margin-right: 80px;
+                padding: 50px;
+                border: 1px solid black;
+                /* Syntax for Shorthand property */
+                /* margin: top right bottom left - Clockwise Direction*/
+                margin: 50px 20px 30px 40px;
+                /* opposite directions: top-bottom & left-right */
+                margin: 30px 60px;
+                /* top right-left bottom */
+                margin: 30px 60px 90px;
+            }
+            p{    /* This is element selector */
+                color: brown;
+            }
+            th{
+                color: whitesmoke;
+                background-color: rgb(42, 112, 112);
+            } 
+            td{
+                /* color: red; */
+                /* rgb stands for red, green & blue, Value can be b/w 0 to 255 */
+                /* color: rgb(100,155,55); */
+                /* rgba method where a stands for alpha, value varies from 0 to 1 in 
+                decimal numbers */
+                /* color: rgba(100,155,55,0.55); */
+                /* hex code - Hexadecimal code */
+                color: #f70101;
+                background-color: aqua;
+            }
+            table{
+                border-width: 10px;
+                border-color: rgb(206, 158, 158);
+                /* solid, dashed, dotted, double, groove, ridge */
+                border-style: solid;  
+                /* Shorthand Property */
+                /*Syntax:  border: width style color */
+                border: 5px solid crimson;
+                /* To make the borders curved */
+                border-radius: 50px;
+                /* We can apply border for 4 directions */
+                /* They are top, bottom, right, left  */
+                border-top: 10px dashed darkblue;
+                border-bottom: 10px dotted rgb(151, 151, 206);
+                border-top-right-radius: 5px;
+                border-top-left-radius: 50px;
+                border-bottom-left-radius: 5px;
+                border-bottom-right-radius: 50px;
+                /* To make all internal borders merged into single border */
+                border-collapse: collapse;
+            }
+            td{
+                border: 1px solid chocolate;
+                border-radius: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- There are 3 types of CSS in Web Development -->
+        <!-- Internal CSS, External CSS & Inline CSS -->
+        <h1>This is a Heading.</h1>
+        <h1>This is a second heading.</h1>
+        <p>This is a paragraph</p>
+        <!-- We have different kind of selectors in CSS -->
+        <!-- They are: Element Selector, Class Selector, ID Selector -->
+        <!-- Element Selector includes all HTML tags -->
+        <table>
+            <tr> 
+                <th>Table Heading 1</th>
+                <th>Table Heading 2</th>
+                <th>Table Heading 3</th>
+            </tr>
+            <tr> 
+                <td>Table Body 11</td>
+                <td>Table Body 12</td>
+                <td>Table Body 13</td>
+            </tr>
+            <tr> 
+                <td>Table Body 21</td>
+                <td>Table Body 22</td>
+                <td>Table Body 23</td>
+            </tr>
+        </table>
+    </body>
+</html>

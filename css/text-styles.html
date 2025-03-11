@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @font-face {
+            font-family: Playwrite-modern;
+            src: url('../fonts/PlaywriteITModerna-VariableFont_wght.ttf');
+        }
+        p{  /* Because of Element selector we are getting repetitive style */
+            color: white;
+            background-color: rgb(225, 128, 0);
+            padding: 10px;
+        }
+        /* Syntax for class selector : ".class_name" */
+        .para-one{
+            color: navy;
+            background: greenyellow;
+        }
+        .para-two{
+            color: darkcyan;
+            background-color: bisque;
+        }
+        .heading-1{
+            font-size: 60px;
+            font-weight: 200;
+            font-family: "Playwrite-modern";
+            text-align: center;
+            /* We can apply underline, overline & line-through */
+            text-decoration: overline;
+        }
+        .third-heading{
+            /* font-family: "Playwrite IT Moderna", serif; */
+            font-size: 40px;
+            text-decoration: underline;
+        }
+        .some-para{
+            /* We can apply 4 values for text-align property: left, right, center & justify */
+            text-align: justify;
+            line-height: 2.5;
+        }
+        a{
+            text-decoration: none;
+        }
+        .heading-2{
+            /* we can apply 3 values: uppercase, lowercase & capitalize */
+            text-transform: capitalize;
+            letter-spacing: 4px;
+            word-spacing: 10px;
+        }
+    </style>
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+IT+Moderna:wght@100..400&display=swap" rel="stylesheet"> -->
+</head>
+<body>
+    <p class="para-one"><u>This is a paragraph.</u></p>
+    <p class="para-two">This is a second paragraph.</p>
+    <p>This is a third paragraph.</p>
+    <h1 class="para-one heading-1">Heading</h1>
+    <p>The above written tag indicates the heading</p>
+    <ol class="para-two">
+        <li>List 1</li>
+        <li>List 2</li>
+        <li>List 3</li>
+    </ol>
+    <h2 class="heading-1">Heading 1</h2>
+    <h2 class="heading-2">This is a Heading 2</h2>
+    <h3 class="third-heading">This is a Smaller Heading</h3>
+    <p class="some-para">Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis suscipit dolorum minima molestiae aut laudantium voluptatum ipsum nihil error fugit debitis expedita, provident cupiditate, vero aspernatur sunt laboriosam quisquam nisi? Atque iste maiores qui ipsum veritatis temporibus laboriosam adipisci quisquam dolores quasi cum neque, tenetur in voluptatibus architecto soluta iusto repudiandae, eum, vel laborum? Quo molestias dicta, fugit dolore unde earum suscipit voluptates, tenetur minus molestiae qui soluta est cupiditate ratione. Impedit excepturi totam saepe placeat! Placeat, rem. Sapiente sunt voluptatibus autem omnis cumque voluptate tempore! Nesciunt nisi temporibus, totam, fugit corrupti sapiente iste velit atque ipsam dolorem inventore commodi. Sit velit enim sint neque explicabo a doloremque corporis adipisci iste, nobis in totam at mollitia possimus tenetur sequi, hic non quo dignissimos beatae. Voluptates dolor dolores repellat, incidunt eligendi doloremque animi veritatis! Provident, vitae cumque! Similique itaque corrupti odit inventore rem nihil numquam, iusto quos quasi expedita nostrum illo, ad eum? Eligendi quas enim, eum corporis sed, unde perspiciatis natus nam, tempore atque quis! Ab inventore corrupti laudantium maxime aliquid vel, beatae pariatur at nostrum iste debitis modi ex quasi cum non, tempore laboriosam amet, atque eligendi? Quo rem harum quas quibusdam ipsam illum asperiores quae officiis, iste possimus! adipisicing elit. Dolore et qui delectus laudantium rerum ducimus earum tenetur ad, dolores autem doloribus ut ipsa reprehenderit placeat amet quasi cumque iste quisquam.</p>
+    <a href="https://www.parvamm.com">ParvaM</a>
+    
+    <div>This is a div block of code.</div>
+    <div>This is another div block of code.</div>
+    <span>This is a span block of code.</span>
+    <span>This is another span block of code.</span>
+    <!-- We have 2 types of elements in HTML. 
+     They are: Block elements & Inline elements -->
+     <h1>This is a heading</h1> <h1>This is another heading</h1>
+</body>
+</html>

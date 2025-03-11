@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Universal Selector */
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        h1{
+            color: brown;
+        }
+        .heading{
+            color: navy;
+            background-color: chartreuse;
+        }
+        p{
+            background-color: burlywood;
+            padding: 2px;
+        }
+        .highlight{
+            background-color: yellow;
+            color: blue;
+        }
+        /* ID Selector */
+        #section-heading{
+            background-color: aqua;
+        }
+        p.highlight{
+            color: green;
+        }
+        span.highlight{
+            color: red;
+        }
+        /* child combinator */
+        .second-section > .headings{
+            color: brown;
+            padding: 10px;
+        }
+        .frontend > .headings{
+            color: blue;
+            padding: 50px;
+        }
+        .grand-father{
+            padding: 100px;
+            border: 1px solid black;
+        }
+        .grand-father > p{
+            padding: 20px;
+            color: navy;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>This is first heading</h1>
+    <div class="section">
+        <h1 class="heading" id="section-heading">This is another heading</h1>
+        <p>This is a para</p>
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+        <hr>
+        <p class="para highlight">This is another para</p>
+        <h3 class="highlight">This is one more heading</h3>
+        <h2 id="imp-heading"><span class="highlight">Note:</span>This is important heading!</h2>
+    </div>
+    <div class="second-section">
+        <h2 class="headings type-2">Heading 2</h2>
+        <p class="paragraph highlight">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, adipisci iusto molestiae necessitatibus rem doloribus eligendi et voluptas minima nemo!</p>
+        <h3 class="headings type-3">Heading 3</h3>
+        <div class="links">
+            <a href="https://www.google.com">Google</a>
+            <a href="https://www.facebook.com">Facebook</a>
+            <a href="https://www.flipkart.com">Flipkart</a>
+        </div>
+        <ol class="frontend">
+            <h4 class="headings type-4">Heading 4</h4>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JS</li>
+            <li>Bootstrap</li>
+        </ol>
+        <p class="frontend">Frontend Technologies are:
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JS</span>
+            <span>BS</span>
+        </p>
+        <p class="frontend">Frontend Technologies are:</p>
+        <span>HTML,</span><span> CSS,</span><span> JS,</span><span> BS</span>
+    </div>
+    <h1>This is outer heading</h1>
+    <div class="grand-father">
+        <p class="first">Doddappa</p>
+        <p class="second">Father <br>
+            <span class="son grandson">Akshay</span>
+            <span class="son grandson">Ajay</span>
+        </p>
+        <p class="third">Chikkappa <br>
+            <span class="son grandson">Vijay</span>
+            <span class="son grandson">Sanjay</span>
+        </p>
+    </div>
+    <p>This is a family tree</p>
+</body>
+</html>
