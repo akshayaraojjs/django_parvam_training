@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+</head>
+<body>
+    <form method="post" action="">
+        <input type="hidden" name="secret_id" id="secret_id" value="Bond-007">
+        <label for="usn">USN:</label>
+        <input type="text" name="usn" id="usn" value="4GL21EC001" readonly><br><br>
+        <label for="first_name">First Name:</label>
+         <input type="text" name="first_name" id="first_name" placeholder="Enter your name" required><br><br>
+        <label for="middle_name">Middle Name:</label>
+         <input type="text" name="middle_name" id="middle_name" placeholder="Enter your middle name"><br><br>
+        <label for="last_name">Last Name:</label>
+         <input type="text" name="last_name" id="last_name"><br><br>
+        <label for="email_id">Email ID:</label>
+         <input type="email" name="email_id" id="email_id" autofocus><br><br>
+        <label for="password">Password:</label>
+         <input type="password" name="password" id="password" placeholder="Enter 8 digit password"><br><br>
+        <label for="phone_number">Phone Number:</label>
+         <input type="tel" name="phone_number" id="phone_number" value="+91-9876543210" disabled><br><br>
+        <label for="age">Age:</label>
+         <input type="number" name="age" id="age" step="2"><br><br>
+        <label for="dob">DOB:</label>
+         <input type="date" name="dob" id="dob"><br><br>
+        <label for="birthday_week">Birthday Week:</label>
+         <input type="week" name="birthday_week" id="birthday_week"><br><br>
+        <label for="birthday_month">Birthday Month:</label>
+         <input type="month" name="birthday_month" id="birthday_month"><br><br>
+        <label for="birth_time">Birthday Time:</label>
+         <input type="time" name="birth_time" id="birth_time"><br><br>
+        <label for="dob_time">DOB with Birthday Time:</label>
+         <input type="datetime-local" name="dob_time" id="dob_time"><br><br>
+        <label for="gender">Gender:</label>
+         <input type="radio" name="gender" id="male" value="M">
+        <label for="male">Male</label>
+         <input type="radio" name="gender" id="female" value="F">
+        <label for="female">Female</label>
+         <input type="radio" name="gender" id="others" value="O">
+        <label for="others">Others</label><br><br>
+        <label for="subjects">Favorite Subjects:</label>
+        <input type="checkbox" name="subject1" id="maths" value="Maths">
+        <label for="maths">Mathematics</label>
+         <input type="checkbox" name="subject2" id="social_science" value="Social Science">
+        <label for="social_science">Social Science</label>
+         <input type="checkbox" name="subject3" id="science" value="Science">
+        <label for="science">Science</label>
+         <input type="checkbox" name="subject4" id="kannada" value="Kannada">
+        <label for="kannada">Kannada</label><br><br>
+        <label for="state">Select State:</label>
+        <select name="state" id="state">
+            <option value="KA">Karnataka</option>
+            <option value="TN">Tamil Nadu</option>
+            <option value="KL">Kerala</option>
+            <option value="MH">Maharashtra</option>
+            <option value="MP">Madhya Pradesh</option>
+        </select><br><br>
+        <label for="rating">Give your Rating:</label>
+        <input type="range" name="rating" id="rating" min="0" max="100"><br><br>
+        <label for="address">Address:</label>
+        <textarea name="address" id="address" rows="10" cols="40"></textarea><br><br>
+        <label for="color">Select your Favorite Color:</label>
+        <input type="color" name="color" id="color"><br><br>
+        <input type="reset" value="Clear">
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
