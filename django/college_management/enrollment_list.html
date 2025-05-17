@@ -1,0 +1,73 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Enrollments</h2>
+    <a class="btn btn-primary mb-3" href="{% url 'enrollment_add' %}">Add Enrollment</a>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Student</th>
+                <th>Course</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for enrollment in enrollments %}
+            <tr>
+                <td>{{ enrollment.student.name }}</td>
+                <td>{{ enrollment.course.name }}</td>
+                <td>{{ enrollment.date_enrolled }}</td>
+                <td>
+                    <a href="{% url 'enrollment_edit' enrollment.id %}" class="btn btn-warning btn-sm">Edit</a>
+                    <!-- Button to trigger modal -->
+                    <button class="btn btn-danger btn-sm"
+                            data-bs-toggle="modal"
+                            data-bs-target="#deleteEnrollmentModal"
+                            data-url="{% url 'enrollment_delete' enrollment.id %}"
+                            data-student="{{ enrollment.student.name }}"
+                            data-course="{{ enrollment.course.name }}">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="deleteEnrollmentModal" tabindex="-1" aria-labelledby="deleteEnrollmentModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title" id="deleteEnrollmentModalLabel">Confirm Delete</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete the enrollment of <strong id="studentName"></strong> for <strong id="courseName"></strong>?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <a id="confirmDeleteBtn" href="#" class="btn btn-danger">Yes, Delete</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- JavaScript to inject data into modal -->
+<script>
+  const deleteModal = document.getElementById('deleteEnrollmentModal');
+  deleteModal.addEventListener('show.bs.modal', function (event) {
+    const button = event.relatedTarget;
+    const deleteUrl = button.getAttribute('data-url');
+    const studentName = button.getAttribute('data-student');
+    const courseName = button.getAttribute('data-course');
+
+    deleteModal.querySelector('#studentName').textContent = studentName;
+    deleteModal.querySelector('#courseName').textContent = courseName;
+    deleteModal.querySelector('#confirmDeleteBtn').setAttribute('href', deleteUrl);
+  });
+</script>
+{% endblock %}
