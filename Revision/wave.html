@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Water Animation</title>
+  <style>
+    body {
+      background-color: #f0f8ff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .traingle {
+      width: 300px;
+      height: 300px;
+      border: 5px dotted brown;
+    }
+
+    .upper-triangle {
+      border-bottom-right-radius: 200px;
+      border-bottom-left-radius: 200px;
+      background-color: lightskyblue;
+    }
+
+    .lower-triangle {
+      border-top-right-radius: 200px;
+      border-top-left-radius: 200px;
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .droplets {
+      border: 1px solid lightskyblue;
+      border-radius: 50px;
+      background-color: lightskyblue;
+      position: absolute;
+      animation: drop 2s infinite ease-in;
+    }
+
+    .drop-1 {
+      width: 30px;
+      height: 30px;
+      top: 20px;
+      animation-delay: 0s;
+    }
+
+    .drop-2 {
+      width: 20px;
+      height: 20px;
+      top: 20px;
+      animation-delay: 0.5s;
+    }
+
+    .drop-3 {
+      width: 10px;
+      height: 10px;
+      top: 20px;
+      animation-delay: 1s;
+    }
+
+    @keyframes drop {
+      0% {
+        top: 20px;
+        opacity: 1;
+      }
+      80% {
+        top: 250px;
+        opacity: 1;
+      }
+      100% {
+        top: 250px;
+        opacity: 0;
+      }
+    }
+
+    .water-block {
+      position: fixed;
+      bottom: 0;
+      height: 100px;
+      width: 300px;
+      background-color: lightskyblue;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .wave {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: blue;
+      opacity: 0.5;
+      animation: waveMove 2s infinite ease-in-out alternate;
+    }
+
+    .wave:nth-child(2n) {
+      background-color: deepskyblue;
+      animation-delay: 0.5s;
+    }
+
+    @keyframes waveMove {
+      0% {
+        transform: translateX(0px) scale(1);
+      }
+      50% {
+        transform: translateX(10px) scale(1.1);
+      }
+      100% {
+        transform: translateX(0px) scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="traingle upper-triangle"></div>
+  <div class="traingle lower-triangle">
+    <div class="droplets drop-1"></div>
+    <div class="droplets drop-2"></div>
+    <div class="droplets drop-3"></div>
+
+    <div class="water-block">
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <!-- Method 1 - CDN Link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Savate:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Method 2 - Using import within style tag */
+        @import
+        url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Savate:ital,wght@0,200..900;1,200..900&display=swap');
+        i.fa-house
+        {
+        color:
+        red;
+        }
+        i.fa-whatsapp
+        {
+        color:
+        rgb(81,
+        189,
+        81);
+        }
+        i.fa-snapchat
+        {
+        background-color:
+        yellow;
+        color:
+        black;
+        }
+        i.bi-car
+        {
+        color:
+        red;
+        }
+        img.headphones
+        {
+        color:
+        indigo;
+        }
+        /* Method 3 - Using @font-face - Offline */
+        @font-face
+        {
+        font-family:
+        Lato-Font;
+        src:
+        url("fonts/Lato/Lato-Regular.ttf");
+        }
+        @font-face
+        {
+        font-family:
+        Savate-Font;
+        src:
+        url("fonts/Savate/Savate-VariableFont_wght.ttf");
+        }
+        @font-face
+        {
+        font-family:
+        Montserrat-Font;
+        src:
+        url("fonts/Montserrat/Montserrat-VariableFont_wght.ttf");
+        }
+        div>h1:first-child
+        {
+        font-family:
+        Lato-Font;
+        }
+        div>h1:nth-child(2)
+        {
+        font-family:
+        Savate-Font;
+        }
+        div>h1:last-child
+        {
+        font-family:
+        Montserrat-Font;
+        }
+        div>h2:first-child
+        {
+        font-family:
+        "Lato",
+        sans-serif;
+        }
+        div>h2:nth-child(2)
+        {
+        font-family:
+        "Savate",
+        sans-serif;
+        }
+        div>h2:last-child
+        {
+        font-family:
+        "Montserrat",
+        sans-serif;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>This is a <i>italic</i> text</h1>
+    <h1>This is a <em>emphasized or italic</em> text</h1>
+    <p>This is a <b>bold</b> text</p>
+    <p>This is a <strong>strong</strong> text</p>
+    Home - <i class="fa-solid fa-house"></i>
+    Whatsapp - <i class="fa-brands fa-whatsapp"></i>
+    Snapchat - <i class="fa-brands fa-snapchat"></i>
+    Car - <i class="bi bi-car-front-fill bi-car"></i>
+    <div>
+        <h1>Heading 1</h1>
+        <h1>Heading 2</h1>
+        <h1>Heading 3</h1>
+    </div>
+    <div>
+        <h2>Heading 1</h2>
+        <h2>Heading 2</h2>
+        <h2>Heading 3</h2>
+    </div>
+    <script src="https://kit.fontawesome.com/ef4b788fc4.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

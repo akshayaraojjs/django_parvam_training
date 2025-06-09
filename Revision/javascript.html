@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="main"></div>
+    <div>
+        <p class="para">This is para1</p>
+        <p class="para">This is para2</p>
+        <p class="para">This is para3</p>
+        <h1>Heading</h1>
+        <h1>Heading 2</h1>
+        <h1>Heading 3</h1>
+        <h1 class="head">Heading with Class Head</h1>
+        <h1 class="head">Heading with Class Head 1</h1>
+        <h1 class="head">Heading with Class Head 2</h1>
+    </div>
+    <p id="error"></p>
+    <button id="showError">Click Me!</button>
+    <!-- External JS -->
+    <script src="script.js"></script>
+    <!-- Internal JS -->
+    <script>
+        // console.log(document); 
+        // console.log(document.body); 
+        // let mainDiv = document.getElementById("main");
+        // mainDiv.innerHTML = "This is a content added from DOM";
+
+        // let firstPara = document.getElementsByClassName("para");
+        // console.log(firstPara[1]);
+
+        // let heading1 = document.getElementsByTagName("h1");
+        // console.log(heading1[1]);
+
+        // let firstHeading = document.querySelector("h1");
+        // console.log(firstHeading);
+
+        // let heading_1 = document.querySelector(".head");
+        // console.log(heading_1);
+
+        // let allHeading = document.querySelectorAll(".head");
+        // console.log(allHeading[1]);
+        
+        let mainContent = document.getElementById("main");
+        mainContent.innerHTML = "Content added!";
+        // Syntax for manipulating the CSS
+        // variable.style.propertyName = "value";
+        // CSS: background-color => JS: backgroundColor
+        mainContent.style.color = "red";
+        mainContent.style.backgroundColor = "yellow";
+        mainContent.style.border = "1px solid brown";
+        mainContent.style.paddingTop = "20px";
+        mainContent.style.paddingLeft = "40px";
+        mainContent.style.paddingBottom = "60px";
+        mainContent.style.width = "60px";
+
+        var age;
+        var age = 50;
+        var age = 80;
+        age = 100;
+
+        let height;  // Declare Once & Later Initialize
+        height = 6;  // Initialization
+        height = 6.5;  // Assignment
+
+        const pi = 3.142;  // Declare & Assign when you create a constant variable
+    </script>
+</body>
+</html>

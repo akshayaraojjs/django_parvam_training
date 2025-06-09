@@ -1,0 +1,99 @@
+Refer the MDN docs for any doubts related to HTML, CSS & JS
+Link: https://developer.mozilla.org/en-US/docs/Web/HTML
+
+HTML - Hypertext Markup Language
+    Hypertext - Links which is used to Navigate b/w the different pages
+    Markup -  markup refers to the use of tags and elements to structure 
+    and format content on a webpage.
+    HTML is a Markup Language but not a Programming Language
+
+Tags - Building blocks of the Website
+    Syntax: <starting-tag> </closing tag>
+    Ex: <h1></h1>
+
+Structure of an HTML
+
+<!DOCTYPE HTML> - Represents the HTML5 Document
+<html>  -  Root Element
+<head> - Contains Meta Information - Meta Title, Keywords & Description 
+         and can also include the CSS 
+<title> Title of the Document </title>
+</head>
+<body> - Includes all the Content of the webpage/website
+</body>
+</html>
+
+Tag - Individual Tag - Ex: <p>, <div>, <h1> - <h6> tag4
+Elements - Contains tags along with content
+Ex: <p> This is a para </p>
+    <h1> This is a heading </h1>
+
+Attributes
+    Provides the additional benefits for the tags, which will be 
+    written within the starting tags.
+Ex: <img> - tag
+    src, width, height - Attributes
+    <img src = "image-path" height = "300px" width = "200px">
+    <a href="link" target="_blank">
+    <input type="text" name= "first_name" id="f_name" placeholder="Enter your name" required>
+    class, id , name, controls, width, height, href, src, action, method, 
+    for, placeholder, value, type, required, pattern - These are all the commonly used attributes.
+
+Hyperlink
+    We use anchor tag(<a>) for creating the hyperlinks
+    Ex: <a href= "https://www.google.com" target="_blank">Google</a>
+    Here href contains the URL of the webpage
+    URL should contain the "https" address for external links
+    https: Hypertext Transfer Protocol Secure
+    target attribute is used to specify the opening of the link
+    commonly we use_blank for opening the link in the new tab of the browser
+
+Image - <img>
+    src: Used to provide the path for the image
+    alt: Provide the alternative info or description about the image
+    height & width: For specifying the dimensions of the image
+path: 2 types - Relative & Absolute path
+    Relative Path - How it is related to current path (We should always use the relative path)
+    Ex: 1. "images/something.png" 
+        2. "../images/another.png"
+    Absolute Path - Complete Path
+    Ex: "C:/Users/Desktop/HTML/images/something.png" (We should not use this anywhere)
+
+Types of Elements in HTML - (Imp)
+    Inline - Occupies the space which is required and leaves for other elements (Side by side) 
+    Block - Block the complete line (Top to Bottom)
+
+Lists:
+    Ordered List - <ol>
+    Unordered List - <ul>
+    <li> - List Item
+    type - Attribute used to specify the type of the List
+    ul type - circle, disc(default), square, none
+    ol type - A, a, I, i, 1(default)
+
+    We will also use Description List
+    dd, dl, dt
+
+Table:
+    Rows & Columns
+    table, tr, td, th
+    Making the table from tr perspective(Row)
+    Attributes: rowspan & colspan
+
+Forms:
+    To collect from the user
+    Input Types: text, email, password, textarea, tel, date, week, month, file, select, radio, checkbox, number, datetime, submit, reset, hidden, range, color
+    Form Attributes: method, action, autocomplete, novalidate, enctype (multipart/form-data) (Important for files)
+    Methods used in HTML forms: get & post
+    get - Passing th data from the URL
+    post - Passing the data from the HTTP protocol 
+    Form Type Attributes: type, name, id, placeholder, value, required, max, min(time & date), disabled, readonly, accept(file), checked(checkbox), selected(select dropdown), maxlength & minlength(text fields), multiple(select, files & email), pattern(validation purpose), step(number)
+
+Media:
+    Video & Audio
+    <video> tag is used to embed a video in the webpage
+    controls attribute is very important for Video controls such as pause-play, forward seeker, volume controls
+    Other attributes includes loop, autoplay, muted, width, height
+    <audio> tag is used to embed a audio in the webpage
+    controls attribute is very important for Audio controls such as pause-play, forward seeker, volume controls
+    Other attributes includes loop, autoplay, muted

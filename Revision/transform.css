@@ -1,0 +1,50 @@
+.box{
+    width: 200px;
+    height: 100px;
+    border: 2px ridge maroon;
+    background-color: yellow;
+}
+
+.box:hover{
+    /* Rotate Property - We can rotate the objects */
+    /* transform: rotate(120deg); */
+    /* Scale Property - We can make it big or small;*/
+    /* transform: scale(0.5); */
+    /* Skew Property - Stretching the objects*/
+    /* transform: skewY(40deg); */
+    /* Translate Property - Moving the objects */
+    /* transform: translateY(300px); */
+    transform: scale(3) rotate(30deg) translate(300px);
+    /* This overwrites all the transform properties */
+    transform: scale(2);
+}
+
+.circle{
+    width: 200px;
+    height: 200px;
+    border: 2px solid crimson;
+    border-radius: 150px;
+    background-color: lightblue;
+    color: white;
+    transition-property: scale;
+    transition-duration: 4000ms;
+    transition-delay: 1s;
+    transition-timing-function:cubic-bezier(0.08, 0.73, 1, 2.03);
+    /* Shorthand Property */
+    /* transition: property | duration | timing-function | delay; */
+    transition: scale 2000ms ease-in-out 3s, background-color 3s ease-in 1s ;
+}
+
+p{
+    text-align: center;
+    transform: translateY(70px);
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.circle:hover{
+    scale: 2;
+    rotate: 45deg;
+    transform: translate(200px, 200px);
+    background-color: blue;
+}

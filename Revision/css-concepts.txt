@@ -1,0 +1,47 @@
+CSS - Cascading Style Sheets
+    Where, Cascading in CSS refers to the process by which the browser determines which style rules to apply when multiple rules target the same element. The term "cascading" highlights how CSS applies a hierarchy of rules, where certain rules take precedence over others based on defined principles.
+    CSS Properties are applied from Top to Bottom
+    CSS Properties are overwritten when newly written at the bottom
+
+Types of CSS
+    Inline CSS - written within the html tags (using style attribute)   
+    Ex: <h1 style="color:red;background-color:yellow">Heading</h1>
+    Internal CSS - written within HTML page (within style tag of head tag)
+    External CSS - written in a separate CSS file externally (styles.css)
+
+Difference b/w types of CSS
+Inline
+    Written within the tag
+    Highest Preference/Priority
+    which will make the code clumpsy because of both css & html combination
+
+Internal CSS
+    Written in the style tag at the head
+    Second Priority
+    Better than Inline CSS
+
+External CSS
+    Written in a separate file
+    Least Priority
+    Best of all types of CSS
+    Industry Preferred
+
+Font Properties 
+    Font Family: 5 Families (Serif, Sans-Serif, Monospace, Cursive & Fantasy)
+    Commonly used fonts: Times New Roman, Poppins, Roboto, Montserrat
+    How to use? Using Google Fonts(Using CDN method & Download Method)
+    Font Size
+    Font Color
+    Font Weight - (Vary b/w 100 - 900, bold, bolder, lighter)
+    Text Transform - lowercase, uppercase, capitalize
+    Letter Spacing - Any number with px
+    Line Spacing - Only numbers(1, 1.5, 2.5, 2.75) - Don't use px
+    Word Spacing - Any number with px
+    Overflow - hidden, visible, scroll
+    Text Alignment - left, right, center & justify
+
+CSS Selectors
+    Element Selector: Ex: h1, td, tr, p, table
+    Class Selector: Ex: .class_name (It can be repeated)
+    ID Selector: Ex: #id_name (It is unique which cannot be repeated)
+    ID > Class > Element (Priority/Specificity)

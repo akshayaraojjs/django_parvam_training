@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title> 
+    <!-- Internal CSS -->
+    <style> 
+        table, th, td{
+            /* border-width: 20px; */
+            /* border-style: solid | dashed | double | dotted | groove | ridge; */
+            /* border-color: named colors | rgb() | hex-code; */
+            /* Shorthand Property */
+            /* border: size style color */
+            border: 2px solid black;
+            /* border for different sides: top, bottom, right & left */
+            /* border-radius for different corners: top-left, top-right, bottom-left *& bottom-right */ 
+            border-collapse: collapse;
+        }
+        h1{
+            border: 3px dashed #025825;
+            border-radius: 10px;
+            color: rgb(255,255,0); /* 0 - 255 */
+            background-color: rgba(0,100,150,1); /* rgba - a stands for alpha */
+            border-bottom-right-radius: 30px;
+            padding: 20px;
+            margin: 50px;
+            /* Different directions */
+            /* Shorthand Property */
+            /* 1 value: all sides equal */
+            /* 2 values: top-bottom & right-left */
+            /* 3 values: top right-left bottom */
+            /* 4 values: top right bottom left - Clockwise Direction */
+            padding: 25px 30px 35px 50px; 
+            /* Box-model: Padding, margin, border & Content */
+        }
+    </style>
+</head>
+<body>
+    <h1>Heading</h1>
+    <a href="https://www.google.com" target="_blank">Google</a>
+    <a href="mailto:akshayarao.parvam@gmail.com">Mail me</a>
+    <a href="tel:8217751557">Call me</a>
+    <a href="javascript:alert('Hello, world!')">Click me</a>
+    <ul type="none">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+    <ol type="A">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ol>
+    <table>
+        <tr>
+            <th rowspan="2">Headings</th>
+            <th>Headings</th>
+            <th>Headings</th>
+        </tr>
+        <tr>
+            <!-- <td>Content</td> -->
+            <td>Content</td>
+            <td>Content</td>
+        </tr>
+        <tr>
+            <td colspan="3">Content</td>
+            <!-- <td>Content</td>
+            <td>Content</td> -->
+        </tr>
+        <tr>
+            <td>Content</td>
+            <td>Content</td>
+            <td>Content</td>
+        </tr>
+    </table>
+    <form>
+        <label for="first_name">First Name:</label>
+        <input type="text" name="first_name" maxlength="12" minlength="3" value="Akshay" readonly>
+        <label for="last_name">Last Name:</label>
+        <input type="text" name="last_name">
+        <label for="age">Age:</label>
+        <input type="number" step="2" name="age">
+        <label for="upload">Upload your pic:</label>
+        <input type="file" name="upload" id="upload_image" accept="image/*" multiple>
+        <label for="upload">Upload your resume in PDF:</label>
+        <input type="file" name="upload" id="upload_image" accept="">
+        <label for="dob">DOB:</label>
+        <input type="date" name="dob" id="dob" max="2025-06-06" min="1947-08-15">
+        <input type="submit" value="Submit the Form">
+    </form>
+</body>
+</html>

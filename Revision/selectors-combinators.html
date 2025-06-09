@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Universal Selector */
+        *{
+            padding: 10px;
+            margin: 10px;
+        }
+        /* body{
+            padding: 10px;
+            margin: 10px;
+        } */
+        a{
+            text-decoration: none;
+        }
+        /* psuedo class - : */
+        /* When the link is already opened */
+        a:visited{
+            color: green;
+        }
+        /* When the link is hovered */
+        a:hover{
+            color: grey;
+        }
+        /* When the link is having some url in href attribute */
+        a:link{
+            color: darkmagenta;
+        }
+        /* When the link is having the focus*/
+        a:focus{
+            color: crimson;
+        }
+        /* When the link is currently opened it will be active*/
+        a:active{
+            color: gold;
+        }
+        /* Element Selector */
+        h1{
+            color: red;
+        }
+        /* Class Selector */
+        .heading{
+            color: brown;
+        }
+        /* ID Selector */
+        #main_heading{
+            color: orange;
+        }
+        /* More Specific */
+        h1.heading{
+            color: greenyellow;
+        }
+        /* Descendent Combinator */
+        div.outer-div p{
+            background-color: aqua;
+            color: black;
+            padding: 5px;
+        }
+        div.outer-div > p{
+            background-color: crimson;
+            color: white;
+        }
+        div.level-2 > p{
+            color: blue;
+        }
+        /* Next Sibling Combinator */
+        div.inner-div + div.level-2{
+            background-color: bisque;
+        }
+        div.level-2 + div.level-3{
+            background-color: lightgreen;
+        }
+        /* Combination of Combinators */
+        ul > li.list-item + li{
+            background-color: yellow;
+        }
+        /* Subsequent-sibling combinator */
+        /* Pseudo Elements */
+        ul li:first-child{
+            background-color: chocolate;
+            color: white;
+        }
+        ul li:last-child{
+            background-color: chocolate;
+            color: white;
+        }
+        /* For Specific Child */
+        ul li:nth-child(4){
+            background-color: goldenrod;
+            color: white;
+        }
+        /* For Even Pattern */
+        ul li:nth-child(2n){
+            background-color: violet;
+            color: white;
+        }
+        /* For Odd Pattern */
+        ul li:nth-child(2n+1){
+            background-color: purple;
+            color: white;
+        }
+        ul > p::first-letter{
+            font-size: 30px;
+        }
+        ul > p:first-of-type{
+            background-color: yellow;
+            color: black;
+        }
+        ul > p:last-of-type{
+            background-color: red;
+            color: wheat;
+        }
+        ul > p:last-of-type{
+            background-color: red;
+            color: wheat;
+        }
+        ul > p:nth-of-type(3){
+            background-color:orange;
+            color: white;
+        }
+        /* ul > li:last-child{
+            & p::first-line{
+                background-color: darkblue;
+                color: white;
+            }
+        } */
+         ul > p::selection{
+            color: yellow;
+            background-color: black;
+         }
+         ul h1::before{
+            content: '🧡';
+         }
+         ul h1::after{
+            content: '😁';
+         }
+    </style>
+</head>
+<body>
+    <h1 class="heading">This is the first heading</h1>
+    <h1 class="heading" id="main_heading">This is the second heading</h1>
+    <h1>This is the third heading</h1>
+    <h2 class="heading">This is H2 heading</h2>
+    <a href="https://www.parvamconsultech.com">ParvaM Consul-tech Pvt. Ltd.</a>
+    <a href="https://www.parvamm.com">ParvaM Software Solutions</a>
+    <div class="outer-div">
+        <div class="inner-div">
+            <p>This is a para</p>
+        </div>
+        <div class="level-2">
+            <p>This is a para</p>
+            <span>
+                <p class="para">This is a para</p>
+                <p>This is a para</p>
+            </span>
+        </div>
+        <div class="level-3">
+            <p>This is a para within level-3</p>
+        </div>
+        <p>This is a para</p>
+    </div>
+    <ul>
+        <li>Item 1</li>
+        <li class="list-item">Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+        <li>Item 5</li>
+        <p>This is a para-1 within ul</p>
+        <li>Item 6</li>
+        <li>Item 7</li>
+        <p>This is a para-2 within ul</p>
+        <li>Item 8</li>
+        <li>Item 9</li>
+        <li>Item 10</li>
+        <p>This is a para-3 within ul</p>
+        <li>Item 11</li>
+        <li>Item 12</li>
+        <li>Item 13</li>
+        <p>This is a para-4 within ul</p>
+        <li>Item 14</li>
+        <li>Item 15</li>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur dolor consequatur modi repellat fuga! Facere molestias quaerat ut expedita repellendus qui nisi fugiat iusto asperiores excepturi. Facilis non id doloribus sapiente alias veniam magnam maiores, consectetur quidem molestiae tempore amet iste similique blanditiis ut ducimus repellat est consequuntur debitis quae!</p>
+        <h1>This is a heading within UL</h1>
+    </ul>
+</body>
+</html>

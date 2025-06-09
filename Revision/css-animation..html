@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .outer-box {
+            width: 500px;
+            height: 500px;
+            border: 10px groove goldenrod;
+        }
+
+        .inner-circle {
+            width: 100px;
+            height: 100px;
+            background-color: chocolate;
+            border-radius: 70px;
+            animation-name: animateCircle;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+            animation-direction: normal;
+            /* Shorthand Property */
+            /* animation: name | duration | timing-function | delay | iteration-count | direction; */
+        }
+
+        .logo {
+            width: 60px;
+            transform: translate(20px, 20px);
+        }
+
+        @keyframes animateCircle {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            20% {
+                transform: translate(400px, 0);
+            }
+
+            40% {
+                transform: translate(400px, 400px);
+            }
+
+            60% {
+                transform: translate(0px, 400px);
+            }
+
+            80% {
+                transform: translate(0px, 0);
+            }
+
+            100% {
+                transform: translate(200px, 200px) scale(2) rotate(360deg);
+                background-color: red;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer-box">
+        <div class="inner-circle">
+            <img class="logo" src="unity-removebg-preview.png" alt="">
+        </div>
+    </div>
+</body>
+
+</html>

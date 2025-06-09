@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wave Pattern</title>
+  <style>
+    body {
+      background-color: #f0f8ff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .traingle {
+      width: 300px;
+      height: 300px;
+      border: 5px dotted brown;
+    }
+
+    .upper-triangle {
+      border-bottom-right-radius: 200px;
+      border-bottom-left-radius: 200px;
+      background-color: lightskyblue;
+      animation: reduceWater 5s;
+    }
+
+    .lower-triangle {
+      border-top-right-radius: 200px;
+      border-top-left-radius: 200px;
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .droplets {
+      border: 1px solid lightskyblue;
+      border-radius: 50px;
+      background-color: lightskyblue;
+      position: absolute;
+      animation: drop 2s infinite ease-in;
+    }
+
+    .drop-1 {
+      width: 30px;
+      height: 30px;
+      top: 20px;
+      animation-delay: 0s;
+    }
+
+    .drop-2 {
+      width: 20px;
+      height: 20px;
+      top: 20px;
+      animation-delay: 0.5s;
+    }
+
+    .drop-3 {
+      width: 10px;
+      height: 10px;
+      top: 20px;
+      animation-delay: 1s;
+    }
+
+    @keyframes drop {
+      0% {
+        top: 20px;
+        opacity: 1;
+      }
+
+      80% {
+        top: 250px;
+        opacity: 1;
+      }
+
+      100% {
+        top: 250px;
+        opacity: 0;
+      }
+    }
+
+    .water-block {
+      position: fixed;
+      bottom: 0;
+      height: 100px;
+      width: 300px;
+      background-color: lightskyblue;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .wave {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: blue;
+      opacity: 0.5;
+      animation: waveBounce 1.5s ease-in-out infinite alternate;
+    }
+
+    .wave:nth-child(even) {
+      background-color: deepskyblue;
+      animation-delay: 0.3s;
+    }
+
+    .wave:nth-child(odd) {
+      animation-delay: 0.6s;
+    }
+
+    @keyframes waveBounce {
+      0% {
+        transform: translateY(0);
+      }
+
+      100% {
+        transform: translateY(-20px);
+      }
+    }
+
+    @keyframes reduceWater {
+      0% {
+        height: 0%;
+      }
+
+      20% {
+        height: 20%;
+      }
+
+      40% {
+        height: 40%;
+      }
+
+      60% {
+        height: 60%;
+      }
+
+      80% {
+        height: 80%;
+      }
+
+      100% {
+        height: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="traingle upper-triangle"></div>
+  <div class="traingle lower-triangle">
+    <div class="droplets drop-1"></div>
+    <div class="droplets drop-2"></div>
+    <div class="droplets drop-3"></div>
+
+    <div class="water-block">
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+    </div>
+  </div>
+</body>
+
+</html>

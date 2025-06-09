@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .traingle {
+            width: 300px;
+            height: 300px;
+            border: 5px dotted brown;
+        }
+
+        .upper-triangle {
+            border-bottom-right-radius: 200px;
+            border-bottom-left-radius: 200px;
+            background-color: lightskyblue;
+        }
+
+        .lower-triangle {
+            border-top-right-radius: 200px;
+            border-top-left-radius: 200px;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .droplets {
+            border: 1px solid lightskyblue;
+            border-radius: 50px;
+        }
+
+        .drop-1 {
+            width: 30px;
+            height: 30px;
+        }
+
+        .drop-2 {
+            width: 20px;
+            height: 20px;
+        }
+
+        .drop-3 {
+            width: 10px;
+            height: 10px;
+        }
+
+        .water-block {
+            position: fixed;
+            bottom: 0;
+            height: 100px;
+            width: 300px;
+            background-color: lightskyblue;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .wave:nth-child(2n) {
+            border-radius: 45px;
+            border: 1px solid blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="traingle upper-triangle"></div>
+    <div class="traingle lower-triangle">
+        <div class="droplets drop-1"></div>
+        <div class="droplets drop-2"></div>
+        <div class="droplets drop-3"></div>
+        <div class="water-block">
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+/* Using External CSS */
+/* This is a CSS comment */
+p{
+    font-size: 20px;
+    background-color: aqua;
+    padding: 10px;
+}
+
+h1{
+    color: green;
+}

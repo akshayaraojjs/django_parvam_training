@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SVG Wave Animation</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #e0f7fa;
+      overflow: hidden;
+    }
+
+    .wave-wrapper {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 150px;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .wave {
+      position: absolute;
+      width: 200%;
+      height: 100%;
+      animation: waveMove 10s linear infinite;
+    }
+
+    .wave path {
+      fill: #2196f3;
+      opacity: 0.6;
+    }
+
+    .wave.second path {
+      fill: #0d47a1;
+      opacity: 0.4;
+    }
+
+    .wave.second {
+      animation-duration: 15s;
+      top: 10px;
+    }
+
+    @keyframes waveMove {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wave-wrapper">
+    <!-- Wave Layer 1 -->
+    <svg class="wave" viewBox="0 0 1200 150" preserveAspectRatio="none">
+      <path d="M0,60 C150,120 350,0 600,60 C850,120 1050,0 1200,60 L1200,150 L0,150 Z" />
+    </svg>
+
+    <!-- Wave Layer 2 -->
+    <svg class="wave second" viewBox="0 0 1200 150" preserveAspectRatio="none">
+      <path d="M0,60 C150,120 350,0 600,60 C850,120 1050,0 1200,60 L1200,150 L0,150 Z" />
+    </svg>
+  </div>
+
+</body>
+</html>
