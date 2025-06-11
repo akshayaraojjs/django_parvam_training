@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hourglass Water Animation</title>
+  <style>
+    body {
+      background: #e0f7fa;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hourglass {
+      width: 200px;
+      height: 400px;
+      position: relative;
+      transform-origin: center;
+    }
+
+    .half {
+      width: 100%;
+      height: 50%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .top-half {
+      border-bottom: 5px solid #795548;
+      border-radius: 0 0 100px 100px;
+    }
+
+    .bottom-half {
+      border-top: 5px solid #795548;
+      border-radius: 100px 100px 0 0;
+    }
+
+    .water {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background-color: deepskyblue;
+      height: 100%;
+    }
+
+    .droplet {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: deepskyblue;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 45%;
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="hourglass" id="hourglass">
+  <div class="half top-half">
+    <div class="water" id="topWater"></div>
+  </div>
+  <div class="droplet" id="droplet"></div>
+  <div class="half bottom-half">
+    <div class="water" id="bottomWater" style="height: 0;"></div>
+  </div>
+</div>
+
+<!-- anime.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script>
+  function startHourglassAnimation() {
+    const timeline = anime.timeline({
+      easing: 'easeInOutSine',
+      duration: 2000,
+    });
+
+    timeline
+      // Droplet falls
+      .add({
+        targets: '#droplet',
+        opacity: [0, 1, 0],
+        translateY: [0, 160],
+        duration: 800
+      })
+
+      // Decrease top water
+      .add({
+        targets: '#topWater',
+        height: ['100%', '0%'],
+        duration: 2000
+      }, '-=1000') // Start midway
+
+      // Increase bottom water
+      .add({
+        targets: '#bottomWater',
+        height: ['0%', '100%'],
+        duration: 2000
+      }, '-=2000')
+
+      // Rotate hourglass (optional loop effect)
+      .add({
+        targets: '#hourglass',
+        rotate: '1turn',
+        duration: 1000
+      })
+
+      // Reset and restart
+      .add({
+        targets: ['#topWater', '#bottomWater'],
+        height: ['100%', '0%'],
+        duration: 10
+      })
+      .add({
+        targets: '#hourglass',
+        rotate: '0turn',
+        duration: 10
+      })
+      .add({
+        complete: () => {
+          startHourglassAnimation(); // loop
+        }
+      });
+  }
+
+  // Start animation on load
+  startHourglassAnimation();
+</script>
+
+</body>
+</html>

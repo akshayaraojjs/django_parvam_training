@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hourglass Water Droplet Animation</title>
+  <style>
+    body {
+      background: #e0f7fa;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hourglass {
+      width: 200px;
+      height: 400px;
+      position: relative;
+      transform-origin: center;
+    }
+
+    .half {
+      width: 100%;
+      height: 50%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .top-half {
+      border-bottom: 5px solid #795548;
+      border-radius: 0 0 100px 100px;
+      background-color: white;
+    }
+
+    .bottom-half {
+      border-top: 5px solid #795548;
+      border-radius: 100px 100px 0 0;
+      background-color: white;
+    }
+
+    .water {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background-color: deepskyblue;
+      height: 100%;
+    }
+
+    .droplet {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: deepskyblue;
+      position: absolute;
+      top: 45%;
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="hourglass" id="hourglass">
+  <div class="half top-half">
+    <div class="water" id="topWater"></div>
+  </div>
+  <div class="half bottom-half">
+    <div class="water" id="bottomWater" style="height: 0;"></div>
+  </div>
+</div>
+
+<!-- anime.js -->
+<script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script>
+  const topWater = document.getElementById('topWater');
+  const bottomWater = document.getElementById('bottomWater');
+  const hourglass = document.getElementById('hourglass');
+
+  // Create multiple droplets dynamically
+  function createDroplets() {
+    for (let i = 0; i < 5; i++) {
+      const drop = document.createElement('div');
+      drop.className = 'droplet';
+      drop.style.left = '50%';
+      drop.style.top = '45%';
+      drop.id = 'droplet-' + i;
+      hourglass.appendChild(drop);
+    }
+  }
+
+  function animateDroplets() {
+    for (let i = 0; i < 5; i++) {
+      anime({
+        targets: '#droplet-' + i,
+        top: ['45%', '82%'],
+        left: {
+          value: () => `${50 + (Math.random() * 40 - 20)}%`,
+          duration: 2000,
+          easing: 'easeOutQuad'
+        },
+        scale: [
+          { value: 1, duration: 500 },
+          { value: 1.2, duration: 300 },
+          { value: 0.8, duration: 300 }
+        ],
+        opacity: [
+          { value: 1, duration: 500 },
+          { value: 0.5, duration: 1500 },
+          { value: 0, duration: 500 }
+        ],
+        duration: 3000 + i * 300,
+        delay: i * 800,
+        easing: 'easeOutBounce'
+      });
+    }
+  }
+
+  function startHourglass() {
+    anime.timeline({
+      easing: 'easeInOutSine',
+      duration: 8000, // Slowed down for realism
+    })
+    .add({
+      targets: topWater,
+      height: ['100%', '0%'],
+    }, 0)
+    .add({
+      targets: bottomWater,
+      height: ['0%', '100%'],
+    }, 0)
+    .add({
+      targets: hourglass,
+      rotate: '1turn',
+      duration: 2000,
+      delay: 2000
+    })
+    .add({
+      targets: [topWater, bottomWater],
+      duration: 10,
+      height: ['100%', '0%']
+    })
+    .add({
+      targets: hourglass,
+      duration: 10,
+      rotate: '0turn'
+    })
+    .add({
+      complete: () => {
+        resetDroplets();
+        setTimeout(() => {
+          animateDroplets();
+          startHourglass();
+        }, 1000);
+      }
+    });
+  }
+
+  function resetDroplets() {
+    for (let i = 0; i < 5; i++) {
+      const drop = document.getElementById('droplet-' + i);
+      if (drop) {
+        drop.style.top = '45%';
+        drop.style.left = '50%';
+        drop.style.opacity = '0';
+      }
+    }
+  }
+
+  createDroplets();
+  animateDroplets();
+  startHourglass();
+</script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #click-btn{
+            padding: 5px;
+            border: 1px solid black;
+            background-color: red;
+            color: white;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Heading in HTML</h1>
+    <button id="click-btn">Click here</button>
+    <form>
+        <label for="num">Enter any number:</label>
+        <input type="text" name="num" id="onlyNumber">
+        <span id="error"></span>
+        <button type="button" id="checkNumber">Check Number</button>
+    </form>
+    <script>
+        numberField = document.getElementById("onlyNumber");
+        checkBtn = document.getElementById("checkNumber");
+        errorBlock = document.getElementById("error");
+
+        checkBtn.addEventListener("click", checkNumber);
+
+        function checkNumber(){
+            console.log("Button clicked & Called the function");
+            console.log(numberField.value);
+            if(numberField.value == "e"){
+                errorBlock.innerHTML = "You've entered the 'e', which is not valid";
+                errorBlock.style.color = "red";
+            } else{
+                errorBlock.style.display = "none";
+            }
+        }
+
+        numberField.addEventListener("focus", focused);
+        function focused(){
+            console.log("You've entered the Input field");
+        }
+
+        numberField.addEventListener("blur", focusRemoved);
+        function focusRemoved(){
+            console.log("You've left the Input field");
+        }
+
+
+        clickBtn = document.getElementById("click-btn");
+        clickBtn.addEventListener('click', clicked);
+        clickBtn.addEventListener('dblclick', dblclicked);
+        clickBtn.addEventListener('mouseover', mouseEntered);
+        clickBtn.addEventListener('mouseout', mouseRemoved);
+        clickBtn.addEventListener('mousedown', mouseClicked);
+        clickBtn.addEventListener('mouseup', mouseReleased);
+
+        browserWindow = window.addEventListener("keydown", function(e){
+            console.log(e);
+            console.log(`You've clicked the ${e.key} key`);
+            console.log(e.keyCode);
+            if(e.altKey){
+                console.log("ALt key has been clicked!");
+            }
+        });
+
+        browserWindow = window.addEventListener("keyup", function(e){
+            console.log(`You've released the ${e.key} key`);
+        });
+
+        function clicked(){
+            console.log("Button Clicked!");
+        }
+
+        function dblclicked(){
+            console.log("Button Clicked twice!");
+        }
+
+        function mouseEntered(){
+            console.log("Mouse Moved over the button!");
+        }
+        
+        function mouseRemoved(){
+            console.log("Mouse Moved out of the button!");
+        }
+
+        function mouseClicked(){
+            console.log("You've clicked on the Mouse button!");
+        }
+
+        function mouseReleased(){
+            console.log("You've released the Mouse button!");
+        }
+    </script>
+</body>
+</html>

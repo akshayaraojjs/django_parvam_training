@@ -1,0 +1,77 @@
+To create a database:
+Syntax: CREATE DATABASE database_name;
+CREATE DATABASE geck;
+
+To create a table:
+Syntax: CREATE TABLE table_name(
+    column1 datatype,
+    column2 datatype constraints(optional),
+    .....
+    column datatype 
+)
+CREATE TABLE students(
+    id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	name varchar(50),
+    email varchar(50),
+    usn varchar(10),
+    age int,
+    branch varchar(20)
+)
+
+To Delete the table:
+Syntax: DROP TABLE table_name;
+DROP TABLE students;
+
+To Insert the data in the table:
+Syntax: Insert into table_name(column1, column2) values (value1, value2);
+Insert into students(name, email, usn, age, branch) values ("Sudeep", "sudeep@test.com", "4GL22EC408", 22, "ECE"); 
+Insert into students(name, email, usn, age, branch) values ("Shiva Prasad", "shivu@test.com", "4GL21EC006", 22, "ECE"); 
+
+Insert into students(name, email, usn, age, branch) values ("Thejas", "thejas@test.com", "4GL21EC005", 22, "ECE"),
+("Swathi", "swathi@test.com", "4GL21EC003", 22, "ECE"),
+("Sahana", "sahana@test.com", "4GL21EC008", 22, "ECE");
+
+Alter / Modify table:
+    Syntax: Alter table table_name ADD/MODIFY/DROP/CHANGE/RENAME column;
+Alter table for new column:
+    Example: Alter table students ADD gender enum("Male", "Female", "Others");
+Drop Column:
+    Example: Alter table students DROP column gender;
+CHANGE Column:
+    Syntax: Alter table table_name CHANGE column original_column renamed_column datatype;
+    Example: Alter table students CHANGE COLUMN gender gender_of_person enum("Male", "Female", "Others"); 
+MODIFY Column:
+    Example: Alter table students MODIFY gender_of_person enum("Male", "Female", "Others") AFTER age;
+Renaming a Table Name:
+    Syntax: Alter table old_table_name RENAME To new_name;
+    Example: Alter table students RENAME To geck_students;
+
+Update the Data in the table:
+    Syntax: Update table_name Set column1 = "value1", column2 = "value2";
+    Example: Update geck_students Set gender_of_person = "Male";  // for all data
+    Example: Update geck_students Set branch = "ECE";  // for all data
+    Example: Update geck_students Set gender_of_person = "Female" where name = "Swathi"; 
+
+Fetching the Data from the table:
+    Select Statement will be used
+    Syntax: Select * from table_name;
+    Example: Select * from geck_students;
+
+Fetching Limited Column Details:
+    Syntax: Select column1, column2 from table_name;
+    Example: Select name, email, usn from geck_students;
+
+Fetching data based on some condition:
+    Example: Select name, email, usn from geck_students where gender_of_person = "Male";
+    Select name, email, usn from geck_students where age > 22;
+    Select name, email, usn from geck_students where gender_of_person = "Male" and age >= 22;
+
+Deleting the data from the TABLE:
+    Syntax: Delete from table_name where condition;
+    Example: Delete from geck_students where age=21;
+
+Limiting the data added in the table:
+    Syntax: Select * from table_name LIMIT starting_point row_count;
+    Example: Select * from geck_students LIMIT 10;
+    Example: Select * from geck_students LIMIT 4, 10;
+    Example: Select * from geck_students ORDER BY name LIMIT 10;

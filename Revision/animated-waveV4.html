@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hourglass Water with Ripple</title>
+  <style>
+    body {
+      background: #e0f7fa;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hourglass-container {
+      position: relative;
+      width: 200px;
+      height: 400px;
+    }
+
+    .hourglass {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-origin: center;
+      transition: transform 1s ease-in-out;
+    }
+
+    .half {
+      width: 100%;
+      height: 50%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .top-half {
+      border-bottom: 5px solid #795548;
+      border-radius: 0 0 100px 100px;
+      background-color: white;
+    }
+
+    .bottom-half {
+      border-top: 5px solid #795548;
+      border-radius: 100px 100px 0 0;
+      background-color: white;
+    }
+
+    .water {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background-color: deepskyblue;
+      height: 100%;
+      overflow: hidden;
+      transition: height 8s linear;
+    }
+
+    .droplet {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: deepskyblue;
+      position: absolute;
+      top: 45%;
+      opacity: 0;
+      z-index: 5;
+    }
+
+    .ripple {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 2px solid white;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .surface {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 8px;
+      width: 100%;
+      background: radial-gradient(circle at 50% 50%, #ffffff66 20%, transparent 70%);
+      opacity: 0.6;
+      animation: rippleSurface 2s ease-in-out infinite;
+    }
+
+    @keyframes rippleSurface {
+      0% { transform: scaleX(1) scaleY(1); opacity: 0.6; }
+      50% { transform: scaleX(1.05) scaleY(0.95); opacity: 0.8; }
+      100% { transform: scaleX(1) scaleY(1); opacity: 0.6; }
+    }
+
+    .timer {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: Arial, sans-serif;
+      font-size: 24px;
+      font-weight: bold;
+      color: #37474f;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="hourglass-container">
+  <div class="hourglass" id="hourglass">
+    <div class="half top-half">
+      <div class="water" id="topWater"><div class="surface"></div></div>
+    </div>
+    <div class="half bottom-half">
+      <div class="water" id="bottomWater"><div class="surface"></div></div>
+    </div>
+  </div>
+  <div class="timer" id="timer">8</div>
+</div>
+
+<!-- Droplet sound -->
+<audio id="dripSound" src="https://www.soundjay.com/button/beep-07.wav" preload="auto"></audio>
+
+<script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script>
+  const hourglass = document.getElementById('hourglass');
+  const topWater = document.getElementById('topWater');
+  const bottomWater = document.getElementById('bottomWater');
+  const timerDisplay = document.getElementById('timer');
+  const dripSound = document.getElementById('dripSound');
+
+  let isFlipped = false;
+  let flipInterval = 8;
+
+  function createDroplets() {
+    for (let i = 0; i < 5; i++) {
+      const drop = document.createElement('div');
+      drop.className = 'droplet';
+      drop.style.left = '50%';
+      drop.style.top = '45%';
+      drop.id = 'droplet-' + i;
+      hourglass.appendChild(drop);
+    }
+  }
+
+  function createRipple(xPercent) {
+    const ripple = document.createElement('div');
+    ripple.className = 'ripple';
+    ripple.style.left = `${xPercent}%`;
+    ripple.style.bottom = '5px';
+    bottomWater.appendChild(ripple);
+    dripSound.currentTime = 0;
+    dripSound.play();
+
+    anime({
+      targets: ripple,
+      width: [0, 30],
+      height: [0, 30],
+      opacity: [0.8, 0],
+      easing: 'easeOutQuad',
+      duration: 1200,
+      complete: () => ripple.remove()
+    });
+  }
+
+  function animateDroplets() {
+    for (let i = 0; i < 5; i++) {
+      const droplet = document.getElementById('droplet-' + i);
+      const xShift = 50 + (Math.random() * 40 - 20);
+      anime({
+        targets: droplet,
+        top: ['45%', '82%'],
+        left: `${xShift}%`,
+        opacity: [
+          { value: 1, duration: 500 },
+          { value: 0.5, duration: 1000 },
+          { value: 0, duration: 300 }
+        ],
+        easing: 'easeOutBounce',
+        duration: 2500 + i * 400,
+        delay: i * 700,
+        complete: () => createRipple(xShift)
+      });
+    }
+  }
+
+  function resetDroplets() {
+    for (let i = 0; i < 5; i++) {
+      const drop = document.getElementById('droplet-' + i);
+      if (drop) {
+        drop.style.top = '45%';
+        drop.style.left = '50%';
+        drop.style.opacity = '0';
+      }
+    }
+  }
+
+  function updateTimer() {
+    let timeLeft = flipInterval;
+    timerDisplay.textContent = timeLeft;
+    const interval = setInterval(() => {
+      timeLeft--;
+      timerDisplay.textContent = timeLeft;
+      if (timeLeft <= 0) clearInterval(interval);
+    }, 1000);
+  }
+
+  function startHourglass() {
+    updateTimer();
+
+    // Animate water
+    topWater.style.height = isFlipped ? '100%' : '0%';
+    bottomWater.style.height = isFlipped ? '0%' : '100%';
+
+    // Flip hourglass visually
+    hourglass.style.transform = isFlipped ? 'rotate(0deg)' : 'rotate(180deg)';
+
+    setTimeout(() => {
+      isFlipped = !isFlipped;
+      resetDroplets();
+      animateDroplets();
+      startHourglass(); // Recursive loop
+    }, flipInterval * 1000);
+  }
+
+  createDroplets();
+  animateDroplets();
+  startHourglass();
+</script>
+
+</body>
+</html>
