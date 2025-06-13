@@ -1,0 +1,15 @@
+{% extends 'employee/header.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Create a New Employee</h1>
+    <form method="post" enctype="multipart/form-data"> 
+        {% csrf_token %}
+        <div class="mb-3">
+            {{ form.as_p }}
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+        <button type="reset" class="btn btn-danger">Cancel</button>
+    </form>
+</div>
+{% endblock %}

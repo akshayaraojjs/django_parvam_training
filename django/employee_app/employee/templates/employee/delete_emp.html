@@ -1,0 +1,19 @@
+{% extends 'employee/header.html' %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h1 class="text-danger">Deleting the Employee Detail of "{{employee.name}}:"</h1>
+    </div>
+    <div class="card-body">
+        <h2>Do you really want to delete the registration details of {{employee.name}}?</h2>
+    </div>
+    <div class="card-footer">
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success">Yes</button>
+            <a class="btn btn-danger" href="{% url 'employees_list' %}">No</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

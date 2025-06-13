@@ -1,0 +1,43 @@
+{% extends 'employee/header.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-primary">Employee Details of "{{employee_detail.name}}"</h1>
+    <table class="table table-bordered table-success table-striped table-hover">
+        <tbody>
+            <tr>
+                <th>Employee ID</th>
+                <td>{{ employee_detail.emp_id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ employee_detail.name }}</td>
+            </tr>
+            <tr>
+                <th>Email ID</th>
+                <td>{{ employee_detail.email }}</td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td>{{ employee_detail.age }}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ employee_detail.address }}</td>
+            </tr>
+            <tr>
+                <th>Profile Pic</th>
+                <td><img src="{{ employee_detail.profile_pic.url }}" alt="{{ employee_detail.name }}'s image"></td>
+            </tr>
+            <tr>
+                <th>Resume</th>
+                <td>{{ employee_detail.resume }}</td>
+            </tr>
+            <tr>
+                <th>Joining Date</th>
+                <td>{{ employee_detail.joining_date }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

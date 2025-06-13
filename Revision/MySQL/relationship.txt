@@ -1,0 +1,108 @@
+DB: geck_college
+CREATE DATABASE geck_college;
+
+Table 1: Students
+CREATE TABLE students(
+    id int PRIMARY KEY AUTO_INCREMENT,
+	name varchar(50),
+    email varchar(50),
+    usn varchar(10),
+    age int,
+    address TEXT,
+    gender enum("M", "F", "O")
+)
+
+Table 2: Branch
+CREATE TABLE branch(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    name varchar(50),
+    short_form varchar(3),
+    hod_name varchar(30),
+    number_of_faculties int
+)
+
+Alter table students
+ADD branch_id int;  
+
+Syntax for adding Foreign Key Constraint:
+Alter table table_name
+ADD new_column datatype,
+ADD FOREIGN KEY (new_column) REFERENCES parent_table(primary_key_column)
+
+Alter table students
+ADD branch_id int,
+ADD FOREIGN KEY (branch_id) REFERENCES branch(id);
+
+CREATE TABLE internship(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    company_name varchar(50),
+    location TEXT,
+    domain varchar(30),
+    internship_type enum("Online","Offline","In-house")
+)
+
+Alter table students
+ADD internship_id int,
+ADD FOREIGN KEY (internship_id) REFERENCES internship(id);
+
+Insert data into students table:
+Insert into students(name, email, usn, age, address, gender) values ("Thejas", "thejas@test.com", "4GL22EC010", 22, "Mysore", "M"),
+("Shiva Prasad", "shivu@test.com", "4GL21EC006", 22, "Srirangapatna", "M"), 
+("Rohit", "rohit@test.com", "4GL21EC004", 22, "Hebbale", "M"),
+("Manoj", "manoj@test.com", "4GL21EC406", 22, "Hassan", "M"); 
+
+Insert data into branch table:
+Insert into branch(name, short_form, hod_name, number_of_faculties) values ("Electronics & Communication Engineering", "ECE", "Pavithra Ma'am", 10),
+("Computer Science & Engineering", "CSE", "Abhishek Sir", 12),
+("Civil Engineering", "CIV", "Sathish Sir", 8),
+("Mechanical Engineering", "ME", "Girish Sir", 15);
+
+Insert data into internship table:
+Insert into internship(company_name, location, domain, internship_type) values ("ParvaM", "Bengaluru", "Full Stack Django", "In-house"),
+("SarvaM", "Tumakuru", "Full Stack Java", "Online"),
+("GarvaM", "Mysuru", "Full Stack PHP", "Offline");
+
+Update the branch & internship details in the students table:
+Update students set branch_id = 1, internship_id = 1 where name= "Sudeep";
+Update students set branch_id = 2, internship_id = 2 where name= "Thejas";
+Update students set branch_id = 3, internship_id = 3 where name= "Shiva Prasad";
+Update students set branch_id = 1, internship_id = 2 where name= "Manoj";
+Update students set branch_id = 2, internship_id = 1 where name= "Rohit";
+
+Renaming the same column name from the branch:
+Alter table branch CHANGE COLUMN name branch_name varchar(50);
+
+JOIN queries:
+1) Left Join:
+Syntax: 
+Select column1, column2, master_column1, master_column2
+from child_table
+LEFT JOIN master_table 
+ON child_table.foreign_key_column = master_table.primary_key_column;
+
+Select name, usn, address, branch_name 
+from students
+LEFT JOIN branch ON students.branch_id = branch.id;
+
+2) Right Join:
+Syntax: 
+Select master_column1, master_column2, child_column1, child_column2,
+from master_table
+RIGHT JOIN child_table 
+ON child_table.foreign_key_column = master_table.primary_key_column;
+
+Select short_form, hod_name, name
+from branch
+RIGHT JOIN students ON branch.id = students.branch_id;
+
+3) Inner Join:
+Select name, branch_name 
+from branch
+INNER JOIN students
+ON students.branch_id = branch.id;
+
+3) Join:
+Select name, email, short_form, hod_name 
+from branch
+JOIN students
+ON students.branch_id = branch.id;
