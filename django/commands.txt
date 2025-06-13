@@ -1,0 +1,186 @@
+I want to install python in my system
+Open Command Prompt and run:
+python --version
+
+If not found, then install the python from official website
+https://www.python.org/downloads/
+
+While installing, make sure to check and tick the 
+Add python.exe to PATH
+
+Again check whether python is installed or not:
+python --version
+
+After Python Installation, install the Virtual Environment Package:
+pip install virtualenv
+
+Make a new folder for your project, then open a new terminal in that folder, then switch from powershell to command prompt version in terminal
+virtualenv environment_name
+or 
+python -m virtualenv environment_name
+Ex: python -m virtualenv venv3124
+
+Then you need to activate the new environment
+venv3124\Scripts\activate
+
+Install Mysql Client:
+pip install mysqlclient
+
+Install Django:
+pip install django==4.2
+
+To Create new Django project:
+django-admmin startproject project_name
+Ex:  django-admin startproject employee_app
+
+To work on the project:
+cd employee_app
+
+Start the Django app:
+python manage.py runserver
+
+To Stop the Django app:
+Click on Ctrl+c 
+
+Default Port Number of Django: 8000
+Where is it running: localhost(127.0.0.1)
+How it is running: Using Apache Server(local server)
+
+Default DB: sqllite(local db)
+
+To make a new application/module:
+python manage.py startapp app_name
+Ex: python manage.py startapp employee 
+
+After making the new application, we need to register the main application's settings.py: INSTALLED_APPS
+Ex:
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'employee',  # new app registered
+]
+
+Then we need to link the routes of the new app in the main application
+Ex: employee_app > urls.py:
+
+    from django.contrib import admin
+    from django.urls import path, include
+
+    urlpatterns = [
+        path('admin/', admin.site.urls), #existing route
+        path('', include('employee.urls')),  #linking the urls of new app when the app is launched
+    ]
+
+Now we can create a urls.py file in new app and create the routes
+i.e New file - employee > urls.py
+
+After creating urls.py file, we can make a new route in this way:
+Syntax: path('route-link/', views.method_name, name = "name_for_route")
+
+Ex: employee > urls.py
+    
+    from django.urls import path
+    from . import views
+
+    urlpatterns = [
+        path('', views.show_employees, name='employees_list'),
+    ]
+
+As the route is calling the "show_employees" method, we need to define the method in views.py:
+Syntax: 
+    def method_name(request):
+        return render(request, 'new_app/file_name.html')
+    
+Ex: employee > views.py
+
+    from django.shortcuts import render
+
+    def show_employees(request):
+        return render(request, 'employee/emp_list.html')
+
+After defining the method, we need to create a new folder called templates in new app:
+new_app > templates > new_app
+Ex: employee > templates > employee
+
+Now we can create the html files for designing the frontend part of our application
+Ex: employee > templates > employee > emp_list.html
+
+We can make a common file for Navbar, so it looks like this:
+Ex: employee > templates > employee > header.html
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- We can make a common menu bar in this place, which can be used in any of the design -->
+        {% block content %}   
+            <!-- Between this we can do any design, by extending this common html file -->
+        {% endblock %}
+    </body>
+</html>
+
+Now to use this common design, we need to make another html file and we can extend this design, instead of repeating it again:
+Syntax:
+{% extends 'new_app/common-file.html'}
+
+{% block content %}
+    <!-- We can make any design here -->
+{% endblock %}
+
+Ex: employee > templates > employee > employee_list.html
+{% extends 'employee/header.html'}
+
+{% block content %}
+    <!-- Heading will be shown here along with menu bar as we are extending the header.html file -->
+    <h1>Employee List</h1>
+{% endblock %}
+
+We got to know about designing using Django, Now we need to configure the database in settings.py file of main application:
+Ex: employee_app > settings.py
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'django_employee_db',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
+}
+
+After configuring the database, we need to create a new database in phpmyadmin, by running the XAMPP.
+
+Next we can create a model schema for the application:
+Ex: employee > models.py
+
+from django.db import models
+
+class Employee(models.Model):
+    emp_id = models.CharField(max_length=10)
+    name = models.CharField(max_length=50)
+    age = models.IntegerField()
+    email = models.EmailField()
+    address = models.TextField()
+    profile_pic = models.ImageField(upload_to='profile/', blank=True, null=True)
+    resume = models.FileField(upload_to='resume/', blank=True, null=True)
+    joining_date = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return self.name
+
+After making the model schema, we need to create a migration file:
+python manage.py makemigrations
+
+Now we can migrate the model schema which is going to automatically create the tables in the given database:
+python manage.py migrate
+
+After migration, we need to modify the views.py methods to add the logic for CRUD operation
