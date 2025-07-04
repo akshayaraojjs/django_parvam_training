@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Enrollment Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+
+        .email-card {
+            background-color: #ffffff;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 30px;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        h2 {
+            color: #0d6efd;
+        }
+
+        p {
+            font-size: 16px;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #6c757d;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="email-card">
+        <h2>Enrollment Confirmed!</h2>
+        <p>Hello <strong>{{ name }}</strong>,</p>
+        <p>You've successfully enrolled in <strong>{{ course }}</strong>.</p>
+        <p>We wish you all the best for your academic journey.</p>
+        <p class="footer">- College Management System</p>
+    </div>
+</body>
+
+</html>
