@@ -1,0 +1,39 @@
+{% extends "internship/base.html" %}
+{% block content %}
+<h1>Candidate List</h1>
+<table class="table table-striped text-center">
+    <thead>
+        <tr>
+            <th>Sl. No.</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Email ID</th>
+            <th>Phone</th>
+            <th>Gender</th>
+            <th>College</th>
+            <th>Branch</th>
+            <th>Address</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for candidate in candidates %}
+        <tr>
+            <td>{{ candidate.id }}</td>
+            <td>{{ candidate.name}}</td>
+            <td>{{ candidate.age}}</td>
+            <td>{{ candidate.email}}</td>
+            <td>{{ candidate.phone}}</td>
+            <td>{{ candidate.gender}}</td>
+            <td>{{ candidate.college}}</td>
+            <td>{{ candidate.branch}}</td>
+            <td>{{ candidate.address}}</td>
+            <td>
+                <a href="{% url 'intern_edit' candidate.id %}" class="btn btn-warning">Edit</a>
+                <a href="{% url 'intern_delete' candidate.id %}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

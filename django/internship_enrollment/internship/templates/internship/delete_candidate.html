@@ -1,0 +1,10 @@
+{% extends "internship/base.html" %}
+{% block content %}
+<h1>Delete Candidate Registration</h1>
+<h3 class="mb-4">Are you sure you want to delete the records of "{{ candidate.name }}"?</h3>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Yes, Delete</button>
+    <a href="{% url 'list_intern' %}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "internship/base.html" %}
+{% block content %}
+<h1>Add Company Details</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">Save</button>
+    <a href="{% url 'company_list' %}" class="btn btn-secondary">Back</a>
+</form>
+{% endblock %}
