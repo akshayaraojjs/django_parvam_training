@@ -1,0 +1,14 @@
+{% extends 'authentication/base.html' %}
+{% block content %}
+<h1>User Dashboard</h1>
+<h2 class="text-primary">Welcome {{ request.user.role }}, Your Details are as follows: </h2>
+<ul>
+    <li>Username: {{ request.user.username }}</li>
+    <li>Full Name: {{ request.user.first_name }} {{ request.user.last_name }}</li>
+    <li>Email Id: {{ request.user.email }}</li>
+    <li>Phone: {{ request.user.phone }}</li>
+    <li>Gender: {{ request.user.gender }}</li>
+    <li>DOB: {{ request.user.dob }}</li>
+    <li>Address: {{ request.user.address }}</li>
+</ul>
+{% endblock %}

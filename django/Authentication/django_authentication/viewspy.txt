@@ -1,0 +1,54 @@
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
+from .forms import RegisterForm
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib import messages
+
+def register(request):
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.set_password(form.cleaned_data['password'])
+            user.save()
+            messages.success(request, "Registration successful.")
+            return redirect('login')
+    else:
+        form = RegisterForm()
+    return render(request, 'accounts/register.html', {'form': form})
+
+def login_view(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            uname = form.cleaned_data.get('username')
+            pwd = form.cleaned_data.get('password')
+            user = authenticate(username=uname, password=pwd)
+            if user:
+                login(request, user)
+                return redirect('dashboard')
+            else:
+                messages.error(request, "Invalid credentials")
+    else:
+        form = AuthenticationForm()
+    return render(request, 'accounts/login.html', {'form': form})
+
+def logout_view(request):
+    logout(request)
+    return redirect('login')
+
+
+<h2>Register</h2>
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Register</button>
+</form>
+
+
+<h2>Login</h2>
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Login</button>
+</form>
