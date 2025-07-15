@@ -1,0 +1,31 @@
+<h2>Employee List</h2>
+
+<form method="GET">
+    Gender:
+    <select name="gender">
+        <option value="">--All--</option>
+        <option value="M">Male</option>
+        <option value="F">Female</option>
+        <option value="O">Other</option>
+    </select>
+
+    Dept:
+    <input type="text" name="dept">
+
+    Sort by:
+    <select name="sort">
+        <option value="">--None--</option>
+        <option value="salary">Salary Asc</option>
+        <option value="-salary">Salary Desc</option>
+        <option value="dept">Department Asc</option>
+        <option value="-dept">Department Desc</option>
+    </select>
+
+    <button type="submit">Apply</button>
+</form>
+
+<ul>
+{% for emp in employees %}
+    <li>{{ emp.name }} - {{ emp.gender }} - {{ emp.department.name }} - ₹{{ emp.salary.amount }}</li>
+{% endfor %}
+</ul>

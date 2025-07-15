@@ -1,0 +1,62 @@
+{% extends 'admission/base.html' %}
+{% block content %}
+<h1 class="text-danger">Student Admission List</h1>
+<form method="GET" class="row mb-3">
+    <div class="col-md-2">
+        <label for="gender" class="form-label">Gender:</label>
+        <select name="gender" class="form-select">
+            <option value="">Select gender</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+            <option value="O">Others</option>
+        </select>
+    </div>
+    <div class="col-md-2">
+        <label for="branch" class="form-label">Branch:</label>
+        <input type="text" name="branch" class="form-control">
+    </div>
+    <div class="col-md-2">
+        <label for="start" class="form-label">Start Date:</label>
+        <input type="date" name="start" class="form-control">
+    </div>
+    <div class="col-md-2">
+        <label for="end" class="form-label">End Date:</label>
+        <input type="date" name="end" class="form-control">
+    </div>
+    <div class="col-md-2">
+        <label for="sort_by" class="form-label">Sort By:</label>
+        <select name="sort" class="form-select">
+            <option value="">None</option>
+            <option value="fees">Fees: Low to High</option>
+            <option value="-fees">Fees: High to Low</option>
+            <option value="age">Age: Low to High</option>
+            <option value="-age">Age: High to Low</option>
+            <option value="branch">Branch: A - Z</option>
+            <option value="-branch">Branch: Z - A</option>
+        </select>
+    </div>
+    <div class="col-md-2">
+        <button type="submit" class="btn btn-success">Apply Filter</button>
+    </div>
+</form>
+<table class="table table-dark table-striped table-bordered table-active">
+    <tr>
+        <th>Student Name</th>
+        <th>Age</th>
+        <th>Branch</th>
+        <th>Gender</th>
+        <th>Fees</th>
+        <th>Admission Date</th>
+    </tr>
+    {% for std in students %}
+    <tr>
+        <td>{{ std.name }}</td>
+        <td>{{ std.age }}</td>
+        <td>{{ std.branch.name }}</td>
+        <td>{{ std.gender }}</td>
+        <td>{{ std.admission.fees }}</td>
+        <td>{{ std.registration_date }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
