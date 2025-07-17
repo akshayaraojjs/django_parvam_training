@@ -1,0 +1,7 @@
+pip install faker // For seeding the fake data for testing
+
+pip install ipython // For using the Django shell for testing the Django ORM
+
+python manage.py shell // To use the Django shell
+
+exit() // To exit the Django shell

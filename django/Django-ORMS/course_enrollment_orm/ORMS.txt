@@ -1,0 +1,79 @@
+Basic Retrieval
+
+| Use Case                              | Syntax                                      |              |
+| ------------------------------------- | ------------------------------------------- | ------------ |
+| Get all objects                       | `Model.objects.all()`                       |              |
+| Get first object                      | `Model.objects.first()`                     |              |
+| Get last object                       | `Model.objects.last()`                      |              |
+| Get object by ID                      | `Model.objects.get(id=1)`                   |              |
+| Filter by field                       | `Model.objects.filter(name="John")`         |              |
+| Exclude a condition                   | `Model.objects.exclude(age=25)`             |              |
+| Filter with multiple conditions (AND) | `Model.objects.filter(name="John", age=25)` |              |
+| Filter with OR condition              | \`Model.objects.filter(Q(name="John")       | Q(age=25))\` |
+| Case-insensitive match                | `Model.objects.filter(name__iexact="john")` |              |
+
+Field Lookups
+
+| Use Case           | Syntax                                             |
+| ------------------ | -------------------------------------------------- |
+| Contains substring | `Model.objects.filter(name__contains="John")`      |
+| Starts with        | `Model.objects.filter(name__startswith="J")`       |
+| Ends with          | `Model.objects.filter(name__endswith="n")`         |
+| Exact match        | `Model.objects.filter(name__exact="John")`         |
+| Greater than       | `Model.objects.filter(age__gt=20)`                 |
+| Less than          | `Model.objects.filter(age__lt=30)`                 |
+| Between two values | `Model.objects.filter(age__range=(20, 30))`        |
+| In list            | `Model.objects.filter(name__in=["John", "Alice"])` |
+| Date filter        | `Model.objects.filter(date__year=2024)`            |
+
+Ordering / Sorting
+
+| Use Case               | Syntax                                       |
+| ---------------------- | -------------------------------------------- |
+| Ascending order        | `Model.objects.order_by('age')`              |
+| Descending order       | `Model.objects.order_by('-age')`             |
+| Order by related model | `Model.objects.order_by('department__name')` |
+
+Aggregation & Annotation
+
+| Use Case            | Syntax                                                     |
+| ------------------- | ---------------------------------------------------------- |
+| Count records       | `Model.objects.count()`                                    |
+| Sum of a field      | `Model.objects.aggregate(Sum('salary'))`                   |
+| Average             | `Model.objects.aggregate(Avg('salary'))`                   |
+| Min/Max             | `Model.objects.aggregate(Max('salary'))`, `Min('salary')`  |
+| Annotate with count | `Model.objects.annotate(num_items=Count('related_model'))` |
+
+Relations / Foreign Keys
+
+| Use Case                      | Syntax                                              |
+| ----------------------------- | --------------------------------------------------- |
+| Access related model          | `employee.department.name`                          |
+| Filter by related model field | `Employee.objects.filter(department__name="HR")`    |
+| Prefetch related models       | `Model.objects.select_related('foreign_key_field')` |
+| Reverse relation              | `department.employee_set.all()`                     |
+
+Create / Update / Delete
+
+| Use Case          | Syntax                                       |
+| ----------------- | -------------------------------------------- |
+| Create new object | `Model.objects.create(name="John", age=25)`  |
+| Save manually     | `obj = Model(); obj.name="John"; obj.save()` |
+| Update records    | `Model.objects.filter(id=1).update(age=30)`  |
+| Delete record     | `Model.objects.get(id=1).delete()`           |
+
+Existence / Boolean Checks
+
+| Use Case                      | Syntax                                       |
+| ----------------------------- | -------------------------------------------- |
+| Check existence               | `Model.objects.filter(name="John").exists()` |
+| Get count of matching records | `Model.objects.filter(age=30).count()`       |
+
+Date Queries
+
+| Use Case             | Syntax                                                           |
+| -------------------- | ---------------------------------------------------------------- |
+| Filter by year       | `Model.objects.filter(date__year=2025)`                          |
+| Filter by month      | `Model.objects.filter(date__month=7)`                            |
+| Filter by day        | `Model.objects.filter(date__day=8)`                              |
+| Filter by date range | `Model.objects.filter(date__range=["2025-01-01", "2025-12-31"])` |

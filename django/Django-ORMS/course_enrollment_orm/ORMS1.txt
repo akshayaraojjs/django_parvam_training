@@ -1,0 +1,123 @@
+Basic Queries:
+
+Get all records
+    Model.objects.all()
+
+Get first record
+    Model.objects.first()
+
+Get last record
+    Model.objects.last()
+
+Get by primary key
+    Model.objects.get(pk=1)
+
+Filter by field
+    Model.objects.filter(name="John")
+
+Exclude records
+    Model.objects.exclude(status="inactive")
+
+Get one object or raise error if not found
+    Model.objects.get(id=10)
+
+Check existence
+    Model.objects.filter(active=True).exists()
+
+Field Lookups:
+
+Exact match
+    Model.objects.filter(field__exact='value')
+
+Contains (case-sensitive)
+    Model.objects.filter(field__contains='val')
+
+Contains (case-insensitive)
+    Model.objects.filter(field__icontains='val')
+
+Starts with
+    Model.objects.filter(field__startswith='abc')
+
+Ends with
+    Model.objects.filter(field__endswith='xyz')
+
+Greater than / Less than
+    Model.objects.filter(price__gt=100)
+    Model.objects.filter(price__lt=1000)
+
+Date Range
+    Model.objects.filter(date__range=['2023-01-01', '2023-12-31'])
+
+Null check
+    Model.objects.filter(field__isnull=True)
+
+Sorting / Ordering:
+
+Ascending order
+    Model.objects.order_by('name')
+
+Descending order
+    Model.objects.order_by('-created_at')
+
+Multiple fields
+    Model.objects.order_by('dept', '-salary')
+
+Aggregation:
+
+from django.db.models import Count, Sum, Avg, Max, Min
+
+Count
+    Model.objects.count()
+
+Sum of field
+    Model.objects.aggregate(Sum('salary'))
+
+Average
+    Model.objects.aggregate(Avg('salary'))
+
+Max / Min
+    Model.objects.aggregate(Max('age'), Min('age'))
+
+Annotate:
+
+from django.db.models import Count
+
+Count related objects
+    Department.objects.annotate(num_employees=Count('employee'))
+
+Related Queries (Foreign Keys):
+
+Access related objects (reverse)
+    department = Department.objects.get(id=1)
+    department.employee_set.all()
+
+Filter across relationship
+    Employee.objects.filter(department__name='IT')
+
+F Expressions:
+
+from django.db.models import F
+
+Compare field to field
+    Model.objects.filter(salary__gt=F('bonus'))
+
+Update using F
+    Model.objects.update(salary=F('salary') + 1000)
+
+Q Objects (OR / Complex filters):
+
+from django.db.models import Q
+
+OR condition
+    Model.objects.filter(Q(name='John') | Q(name='Jane'))
+
+AND with OR
+    Model.objects.filter(Q(age__gt=25) & Q(status='active'))
+
+Distinct & Values:
+
+Get distinct values
+    Model.objects.values('dept').distinct()
+
+Return specific fields
+    Model.objects.values('name', 'email':)
