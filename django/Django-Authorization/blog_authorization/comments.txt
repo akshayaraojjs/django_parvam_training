@@ -1,0 +1,8 @@
+1. We shall make a Django Project (blog_authorization)
+2. We shall make a new app within the Project (blog)
+3. We need to add that app in the Installed Apps
+4. We need to configure the DB and create DB in MySQL
+5. Make a new file called signals.py in the new app (blog)
+6. After this we need to link the signals.py in apps.py (blog)
+7. signals.py will take care of the group creation, add new permissions & link the permissions to the respective groups.
+8. Decorators - @login_required, @permission_required are used to check whether the user has logged in or not & check their respective permissions

@@ -1,0 +1,15 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Your Permissions</h2>
+    {% if permission_list %}
+        <ul class="list-group">
+            {% for permission in permission_list %}
+                <li class="list-group-item">{{ permission.name }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <div class="alert alert-warning mt-3">You don't have any assigned permissions.</div>
+    {% endif %}
+</div>
+{% endblock %}
