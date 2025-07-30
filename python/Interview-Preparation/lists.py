@@ -153,7 +153,7 @@ print(some_list)
 # Syntax = list[index] =  new_value
 some_list[2] = 6 # 5 is replaced by 6
 print(some_list)
-some_list.remove(4) # If we try to remove the item which is not present in the list, then we will get "ValueError: list.remove(x): x not in list"
+# some_list.remove(4) # If we try to remove the item which is not present in the list, then we will get "ValueError: list.remove(x): x not in list"
 
 some_list.clear() # clear method is used to remove all elements which returns the empty list
 print(some_list)
@@ -164,3 +164,14 @@ del some_list # del keyword is used to remove the list itself
 # IndexError: when the finding index is not present in the list
 # ValueError: when the finding value is not present in the list
 # NameError: when the variable itself is not present (Occurred commonly when del keyword is used)
+
+name_list = ["Akshay"]
+print("What type of data is name_list:",type(name_list))
+
+
+list1 = [1, 2, 3, 4, 5]
+list2 = [6, 7, 8, 9, 10]
+
+list3 = list1 + list2 # combine 2 list and assign it to new list
+list3.sort(reverse=True)
+print(list3)
