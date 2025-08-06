@@ -1,0 +1,343 @@
+Object-Oriented Programming in Python
+
+What is OOP?
+
+OOP is a programming paradigm based on the concept of “objects”, which can contain data (attributes) and code (methods). It helps to structure the code efficiently and promotes code reuse.
+
+Key Concepts in OOP
+
+1. Class – Blueprint or template for creating objects.
+2. Object – An instance of a class.
+3. Attributes – Variables that belong to a class/object.
+4. Methods – Functions defined inside a class.
+5. Constructor – A special method called when an object is created (`__init__()`).
+
+1. Creating a Class and Object
+
+class Student:
+    # Constructor method
+    def __init__(self, name, age):
+        self.name = name    # attribute
+        self.age = age      # attribute
+
+    # Method
+    def show_details(self):
+        print(f"Name: {self.name}, Age: {self.age}")
+
+# Creating objects
+student1 = Student("Alice", 20)
+student2 = Student("Bob", 22)
+
+# Accessing method
+student1.show_details()
+student2.show_details()
+
+2. Example with Method Using a Calculation
+
+class Circle:
+    def __init__(self, radius):
+        self.radius = radius
+
+    def area(self):
+        return 3.14 * self.radius * self.radius
+
+c1 = Circle(5)
+print("Area of Circle:", c1.area())
+
+3. Object with Default Constructor
+
+class Hello:
+    def __init__(self):
+        print("Object created!")
+
+obj = Hello()  # Constructor is called automatically
+
+4. Class with Method that Takes Parameters
+
+class Calculator:
+    def add(self, a, b):
+        return a + b
+
+calc = Calculator()
+print("Sum:", calc.add(10, 20))
+
+5. Multiple Objects from One Class
+
+class Car:
+    def __init__(self, brand, model):
+        self.brand = brand
+        self.model = model
+
+    def show(self):
+        print(f"{self.brand} - {self.model}")
+
+car1 = Car("Toyota", "Innova")
+car2 = Car("Hyundai", "i20")
+
+car1.show()
+car2.show()
+
+Key Points:
+
+* Use `self` to access instance variables/methods.
+* Constructor method is always named `__init__`.
+* A class can have multiple objects.
+* Methods can receive external values using parameters.
+
+
+Init method:
+
+Great! Let’s understand the `__init__` method in Python in a simple and clear way.
+
+What is `__init__()` in Python?
+
+The `__init__()` method is a special method (also called a constructor) in Python classes.
+
+* It gets called automatically when an object of the class is created.
+* It is used to initialize the object’s attributes with values.
+
+Syntax of `__init__()`:
+
+class ClassName:
+    def __init__(self, parameters):
+        self.attribute = value
+
+* `self` refers to the current object.
+* You can pass values to `__init__()` to initialize object data.
+
+Example 1: Using `__init__()` to Set Name and Age
+
+class Person:
+    def __init__(self, name, age):
+        self.name = name  # assign to object
+        self.age = age
+
+    def show(self):
+        print(f"Name: {self.name}, Age: {self.age}")
+
+# Object creation
+p1 = Person("Alice", 25)
+p2 = Person("Bob", 30)
+
+p1.show()
+p2.show()
+
+Example 2: Without Parameters (Default Constructor)
+
+class Hello:
+    def __init__(self):
+        print("Object Created!")
+
+obj = Hello()
+
+Why is `__init__()` Useful?
+
+* Automatically initializes object data.
+* Keeps your object setup clean and structured.
+* Reduces repetition when creating multiple objects.
+
+Summary:
+
+| Feature          | Details                         |
+| ---------------- | ------------------------------- |
+| Function Name    | `__init__` (double underscores) |
+| Type             | Special method / Constructor    |
+| Called When      | Object is created               |
+| Used For         | Initialize instance variables   |
+| Requires `self`? | Yes, as the first parameter     |
+------------------------------------------------------
+Access Specifier:
+
+What are Access Modifiers?
+
+Access Modifiers are used to set the visibility of class members (variables and methods) — i.e., whether they can be accessed from outside the class.
+
+Python supports 3 types of access modifiers:
+
+| Modifier  | Syntax   | Accessibility                          |
+| --------- | -------- | -------------------------------------- |
+| Public    | `name`   | Accessible from anywhere               |
+| Protected | `_name`  | Accessible within class and subclasses |
+| Private   | `__name` | Accessible only within the class       |
+
+1. Public Members
+
+Default behavior — accessible from anywhere.
+
+class Car:
+    def __init__(self):
+        self.brand = "Toyota"  # public variable
+
+c = Car()
+print(c.brand)  # Allowed
+
+2. Protected Members
+
+Prefix with one underscore `_` — conventionally intended to be protected (not enforced).
+
+class Car:
+    def __init__(self):
+        self._engine = "V8"  # protected
+
+class SportsCar(Car):
+    def show_engine(self):
+        print("Engine Type:", self._engine)
+
+s = SportsCar()
+s.show_engine()        # Allowed
+print(s._engine)       # Technically allowed, but not recommended
+
+> In Python, `_` is just a convention. It’s still accessible but treated as protected by developers.
+
+3. Private Members
+
+Prefix with two underscores `__` — name mangled to make them private.
+
+class BankAccount:
+    def __init__(self):
+        self.__balance = 1000  # private variable
+
+    def show_balance(self):
+        print("Balance:", self.__balance)
+
+acc = BankAccount()
+acc.show_balance()      # Allowed
+# print(acc.__balance)  Error: Not accessible directly
+
+> Private members can still be accessed using name mangling: `_ClassName__member`, but that breaks encapsulation.
+
+Quick Recap
+
+| Modifier  | Syntax  | Accessible From       | Use Case                      |
+| --------- | ------- | --------------------- | ----------------------------- |
+| Public    | `var`   | Anywhere              | General attributes/methods    |
+| Protected | `_var`  | Class and Subclasses  | Internal use, not strict      |
+| Private   | `__var` | Only within the class | Sensitive data, encapsulation |
+-------------------------------------------------------------------------------
+Usecases for Access Modifiers:
+
+Public Members – 3 Use Case Examples
+
+Use Case 1: Student Details
+
+class Student:
+    def __init__(self, name, grade):
+        self.name = name  # public
+        self.grade = grade  # public
+
+s1 = Student("Akshay", "A")
+print("Name:", s1.name)
+print("Grade:", s1.grade)
+
+Use Case 2: Bank Account Display
+
+class BankAccount:
+    def __init__(self, holder, balance):
+        self.holder = holder  # public
+        self.balance = balance  # public
+
+acc = BankAccount("Ravi", 5000)
+print(f"{acc.holder}'s balance is ₹{acc.balance}")
+
+Use Case 3: Product Information
+
+class Product:
+    def __init__(self, name, price):
+        self.name = name  # public
+        self.price = price  # public
+
+p = Product("Laptop", 45000)
+print("Product:", p.name)
+print("Price:", p.price)
+-----------------------------------------------------------------
+Protected Members – 3 Use Case Examples
+
+Use Case 1: Employee with Base Salary
+
+class Employee:
+    def __init__(self, name):
+        self._base_salary = 30000  # protected
+        self.name = name
+
+    def show_salary(self):
+        print(f"{self.name}'s base salary: ₹{self._base_salary}")
+
+e1 = Employee("John")
+e1.show_salary()
+print(e1._base_salary)  # Technically allowed
+
+Use Case 2: Animal → Dog Subclass Accessing Protected
+
+class Animal:
+    def __init__(self):
+        self._type = "Mammal"  # protected
+
+class Dog(Animal):
+    def describe(self):
+        print("Dog is a", self._type)
+
+d = Dog()
+d.describe()
+
+Use Case 3: Course and Subject Access
+
+class Course:
+    def __init__(self):
+        self._subject = "Mathematics"  # protected
+
+class Student(Course):
+    def show_subject(self):
+        print("Enrolled in:", self._subject)
+
+s = Student()
+s.show_subject()
+-----------------------------------------------------------------
+Private Members – 3 Use Case Examples
+
+Use Case 1: Bank Account with Hidden Balance
+
+class Bank:
+    def __init__(self):
+        self.__balance = 10000  # private
+
+    def get_balance(self):
+        return self.__balance
+
+b = Bank()
+print("Balance:", b.get_balance())
+# print(b.__balance)  # Error
+
+Use Case 2: Secure User Login
+
+class User:
+    def __init__(self, username, password):
+        self.username = username
+        self.__password = password  # private
+
+    def check_password(self, pwd):
+        return pwd == self.__password
+
+u = User("admin", "secret123")
+print("Access granted?" , u.check_password("secret123")) 
+# print(u.__password)  # Error
+
+Use Case 3: Encapsulated Data Processing
+
+class DataProcessor:
+    def __init__(self):
+        self.__data = [1, 2, 3, 4]  # private
+
+    def get_sum(self):
+        return sum(self.__data)
+
+dp = DataProcessor()
+print("Sum:", dp.get_sum())
+# print(dp.__data)  # Not accessible
+-----------------------------------------------------------------
+Summary
+
+| Modifier  | Syntax   | Access Level      | Typical Use         |
+| --------- | -------- | ----------------- | ------------------- |
+| Public    | `name`   | Anywhere          | General data        |
+| Protected | `_name`  | Class + Subclass  | Internal details    |
+| Private   | `__name` | Inside Class Only | Secure/hidden logic |
