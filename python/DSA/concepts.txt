@@ -1,0 +1,40 @@
+User Defined Data Structures:
+Stack
+Queue
+Types of Queue
+Linked List
+Hashing
+
+Arrays (1 and Multi-dimensional Array)
+
+Algorithms:
+Searching & Sorting Algorithms
+Recursion
+
+
+Stack: (LIFO - Last In First Out)
+
+From "Top" we can add & remove the data
+Ex: Books, Chocolate Box
+Linear Data Structure(1 Dimensional), where we can perform some operations:
+Push - Add some data
+Pop - Remove some data
+Peek - check for data
+Check Size of the Stack - check size of stack
+Empty/Not - check whether stack is empty or full
+
+Queue: (FIFO - First In First Out)
+
+Linear Data Structure where we can perform some operations:
+enqueue: Add the data
+dequeue - Remove the data
+front end - Fetching the first item
+rear end - Fetching the last item
+size of Queue - check its size
+empty/not - check whether it is empty or not
+
+Types of Queue:
+1) FIFO Queue (Normal Queue)
+2) Circular Queue
+3) Priority Queue
+4) Deque - Double Ended Queue
