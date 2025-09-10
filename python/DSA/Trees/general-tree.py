@@ -13,12 +13,14 @@ class TreeNode:
         level = 0
         p = self.parent
         while p:
+            # 1st iteration: level = level + 1 = 0 + 1 = 1
+            # 2nd iteration: level = level + 1 = 1 + 1 = 2
             level += 1
             p = p.parent
         return level
     
     def print_tree(self):
-        spacing = "     " * self.get_level()
+        spacing = "      " * self.get_level()
         # Ternary Operator
         # prefix = spacing + "|---" if self.parent else ""
         if self.parent:
@@ -27,6 +29,7 @@ class TreeNode:
             prefix = ""
         print(prefix + str(self.data))
         
+        # Recursion: calling the function itself
         if self.children:
             for child in self.children:
                 child.print_tree()
@@ -72,6 +75,8 @@ class GeneralTree:
 tree = GeneralTree() #Object of General Tree class
 
 tree.build_tree()
+# When we call display() method, it will call print_tree() method and it is going to call back the get_level() method
+# display() -> print_tree() -> get_level()
 tree.display()
 
         # Complex Tree Structure
@@ -181,4 +186,22 @@ tree.display()
 # four.parent = child3
 # child3.children.append(four) => child3.children = [65, 75, 85, 95]
 
+# child3.children = [65, 75, 85, 95]
+
+# root.add_child(child1)
+# root.children = [child1]
+# child1.parent = root
+# root.add_child(child2)
+# root.children = [child1, child2]
+# child2.parent = root
+# root.add_child(child3)
+# root.children = [child1, child2, child3]
+# child3.parent = root
+
+
+# Final:
+# root = 10, child1 = 20, child2 = 60, child3 = 55
+# root.children = [child1, child2, child3]
+# child1.children = [30, 40, 50]
+# child2.children = [70, 80]
 # child3.children = [65, 75, 85, 95]
